@@ -2,38 +2,38 @@
 
 class DB
 {
-    //Подключение к базе данных в констуркторе класса
+    private $dbh;
+    private $className = 'StdClass';
+
+
     public function __construct()
     {
-        mysql_connect('localhost','root','');
-        mysql_select_db('test');
+        $this->dbh = new PDO('mysql:dbname=test;host=localhost;charset=UTF8', 'root', '');
     }
 
-    //Получение массива объектов из БД заданного класса согласно запроса
-    public function queryAll($sql, $class = 'stdClass')
+    public function setClassName($className)
     {
-        $res = mysql_query($sql);
-        if (false === $res) {
-            return false;
-        }
-        $ret = [];
-        while ($row = mysql_fetch_object($res, $class)){
-            $ret[] = $row;
-        }
-        return $ret;
+        $this->className = $className;
     }
 
-    //Получение конкретного объекта из БД согласно запроса
-    public function queryOne($sql, $class = 'stdClass')
+
+     public function query($sql, $params=[])
     {
-      return $this->queryAll($sql, $class = 'stdClass')[0];
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($params);
+        return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
     }
 
-    //Выполнение любого запроса к БД
-    public function queryAny($sql)
+
+    public function execute($sql, $params=[])
     {
-        mysql_query($sql);
+        $sth = $this->dbh->prepare($sql);
+        return $sth->execute($params);
     }
 
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 
 }

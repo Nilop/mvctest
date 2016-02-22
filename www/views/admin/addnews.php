@@ -1,4 +1,3 @@
-
 <h1>Добавление новой новости</h1>
 <form action="/?ctrl=Admin&act=Addnews" method="post">
     <label for="title">Введите заголовок новости:</label>

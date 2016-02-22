@@ -1,7 +1,0 @@
-RewriteEngine on
-RewriteBase /
-RewriteRule ^users/([0-9]+)\.html$  userinfo.php?user_id=$1
-RewriteRule ^users/?$               users.php?%{QUERY_STRING}
-RewriteRule ^news/?$                news.php
-RewriteRule ^news/([a-z_]+)/?$      news.php?cat=$1
-RewriteRule ^news/([0-9]+).html$    news.php?id=$1
