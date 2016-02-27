@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+
+RewriteRule ^(.*)$ index.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) index.php?__route=$1

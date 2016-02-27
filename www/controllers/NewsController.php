@@ -38,7 +38,6 @@ class NewsController
 
         if (isset($column) && isset($value) && !(isset($eror_report))) {
             $result = NewsModel::getByColumn($column, $value);
-            if (count($result)==0) ($eror_report='По вашему запросу ничего не найдено');
         }
 
         if (!(isset($eror_report))) {

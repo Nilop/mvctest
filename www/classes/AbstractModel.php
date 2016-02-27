@@ -44,7 +44,15 @@ abstract class AbstractModel
         $db->setClassName($class);
 
         $sql = 'SELECT * FROM ' . static::$table . " WHERE " . $column . " LIKE '%". $value ."%'";
-        return $db->query($sql);
+        $res = $db->query($sql);
+
+        if (empty($res)) {
+            $e = new ModelException('Ничего не найдено...');
+            throw $e;
+        }
+
+        return $res;
+
     }
 
 
