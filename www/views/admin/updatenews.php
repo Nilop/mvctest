@@ -1,5 +1,5 @@
 <h1>Редактирование новости</h1>
-<form action="/?ctrl=Admin&act=Updatenews&id=<?php echo $item->id; ?>" method="post">
+<form action="/Admin/Updatenews?id=<?php echo $item->id; ?>" method="post">
     <label for="title">Отредактируйте заголовок новости:</label>
     <br>
     <input type="text" id="title" name="title" value="<?php echo $item->title; ?>" required>

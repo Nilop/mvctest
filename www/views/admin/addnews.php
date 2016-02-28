@@ -1,5 +1,5 @@
 <h1>Добавление новой новости</h1>
-<form action="/?ctrl=Admin&act=Addnews" method="post">
+<form action="/Admin/Addnews" method="post">
     <label for="title">Введите заголовок новости:</label>
     <br>
     <input type="text" id="title" name="title" required>

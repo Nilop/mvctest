@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Classes;
+
+use App\Classes\DB;
+
 abstract class AbstractModel
 {
     static protected $table;
@@ -47,7 +51,7 @@ abstract class AbstractModel
         $res = $db->query($sql);
 
         if (empty($res)) {
-            $e = new ModelException('Ничего не найдено...');
+            $e = new E404Exception('Ничего не найдено...');
             throw $e;
         }
 
